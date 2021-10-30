@@ -1,0 +1,869 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>UserService</name>
+    </assembly>
+    <members>
+        <member name="T:UserService.Controllers.AccountController">
+            <summary>
+            Kontroler za proveru nalog tokom autentifikacije korisnika
+            </summary>
+        </member>
+        <member name="M:UserService.Controllers.AccountController.CheckAccount(UserService.Models.CheckAccountRequest)">
+            <summary>
+            Provera da li su informacije za login validne
+            </summary>
+            <returns>Information about username and password being valid</returns>
+            <response code="200">Information for principal</response>
+            <response code="400">Wrong information for principal</response>
+            <response code="500">Error on the server while checking principal</response>
+        </member>
+        <member name="T:UserService.Controllers.CorporationUserController">
+            <summary>
+            Kontroler za dobavljanje, kreiranje, updajtovanje i brisanje korporativnih naloga
+            </summary>
+        </member>
+        <member name="M:UserService.Controllers.CorporationUserController.GetUsers(System.String,System.String)">
+            <summary>
+            Vraca listu svih korporativnih naloga u sistemu
+            </summary>
+            <param name="country">Name of the country</param>
+            <param name="username">User username</param>
+            <returns>List of corporation user accounts</returns>
+            <response code="200">Returns the list</response>
+            <response code="204">No user accounts are found</response>
+            <response code="401">Unauthorized user</response>
+            <response code="500">There was an error on the server</response>
+        </member>
+        <member name="M:UserService.Controllers.CorporationUserController.GetUserById(System.Guid)">
+             <summary>
+             Vraca korporativni nalog sa odredjenim ID-om
+             </summary>
+             <param name="userId">User's Id</param>
+             <returns>Corporation user with userId</returns>
+            <response code="200">Returns the user</response>
+             <response code="404">User with userId is not found</response>
+             <response code="401">Unauthorized user</response>
+             <response code="500">There was an error on the server</response>
+        </member>
+        <member name="M:UserService.Controllers.CorporationUserController.CreateUser(UserService.Models.Users.CorporationUserCreatingDto)">
+             <summary>
+             Kreira novi korporativni nalog
+             </summary>
+             <param name="corporationUser">Model of corporation user</param>
+             <returns>Confirmation of the creating of corporation user</returns>
+             <response code="200">Returns the created corporation user</response>
+            <response code="409">Unique value violation</response>
+             <response code="422">Constraint violation</response>
+             <response code="500">There was an error on the server</response>
+        </member>
+        <member name="M:UserService.Controllers.CorporationUserController.UpdateUser(UserService.Models.Users.CorporationUserUpdateDto,System.Guid)">
+             <summary>
+             Update-ovanje korporativnog naloga
+             </summary>
+             <param name="userId">User's Id</param>
+             <returns>Confirmation for updating Corporation user</returns>
+             <response code="200">Returns updated user</response>
+             <response code="404">Corporation user with userId is not found</response>
+            <response code="400">User doesn't own the resource</response>
+             <response code="401">Unauthorized user</response>
+            <response code="409">Unique value violation</response>
+             <response code="422">Constraint violation</response>
+             <response code="500">Error on the server while updating</response>
+        </member>
+        <member name="M:UserService.Controllers.CorporationUserController.DeleteUser(System.Guid)">
+             <summary>
+             Brisanje korporacijskog naloga sa odredjenim ID-om
+             </summary>
+             <param name="userId">User's Id</param>
+             <returns>Status 204 (NoContent)</returns>
+             <response code="204">User succesfully deleted</response>
+            <response code="400">User doesn't own the resource</response>
+             <response code="401">Unauthorized user</response>
+             <response code="404">User with this is userId not found</response>
+             <response code="500">Error on the server while updating</response>
+        </member>
+        <member name="T:UserService.Controllers.CountryController">
+            <summary>
+            Kontroler za pribavljanje, kreiranje, update-ovanje i brisanje drzava
+            </summary>
+        </member>
+        <member name="M:UserService.Controllers.CountryController.GetCountries(System.String)">
+            <summary>
+            Vraca listu svih drzava
+            </summary>
+            <param name="countryName">Name of the country</param>
+            <returns>List of cities</returns>
+            <response code="200">Returns the list</response>
+            <response code="204">List is empty</response>
+            <response code="401">Unauthorized user</response>
+            <response code="500">Error on the server</response>
+        </member>
+        <member name="M:UserService.Controllers.CountryController.GetCountryById(System.Guid)">
+             <summary>
+             Vraca zemlju sa odredjenim ID-om
+             </summary>
+             <param name="countryId">Country Id</param>
+             <returns>Country with countryId</returns>
+            <response code="200">Returns the country</response>
+             <response code="401">Unauthorized user</response>
+             <response code="404">Country with countryId is not found</response>
+             <response code="500">Error on the server while fetching cities</response>
+        </member>
+        <member name="M:UserService.Controllers.CountryController.CreateCountry(UserService.Models.Country.CountryCreatingDto)">
+            <summary>
+            Kreira novu zemlju
+            </summary>
+            <param name="country">Model of country</param>
+            <returns>Confirmation of the creating a country</returns>
+            <response code="200">Returns the created country</response>
+            <response code="401">Unauthorized user</response>
+            <response code="500">There was an error on the server</response>
+        </member>
+        <member name="M:UserService.Controllers.CountryController.UpdateCountry(UserService.Models.Country.CountryUpdateDto,System.Guid)">
+            <summary>
+            Update-ovanje drzave
+            </summary>
+            <param name="countryId">Country Id</param>
+            <returns>Confirmation of update</returns>
+            <response code="200">Returns updated country</response>
+            <response code="400">Country with countryId is not found</response>
+            <response code="401">Unauthorized user</response>
+            <response code="500">Error on the server while updating</response>
+        </member>
+        <member name="M:UserService.Controllers.CountryController.DeleteCountry(System.Guid)">
+            <summary>
+            Brisanje zemlje sa odredjenim ID-om
+            </summary>
+            <param name="countryId">Country Id</param>
+            <returns>Status 204 (NoContent)</returns>
+            <response code="204">Country is deleted</response>
+            <response code="401">Unauthorized user</response>
+            <response code="404">Country with specified countryId is not found</response>
+            <response code="409">Country is referenced in another table</response>
+            <response code="500">Error on the server while deleting</response>
+        </member>
+        <member name="T:UserService.Controllers.PersonalUserController">
+            <summary>
+            Kontroler za pribavljanje, kreiranje, update-ovanje i brisanje personalnih naloga
+            </summary>
+        </member>
+        <member name="M:UserService.Controllers.PersonalUserController.GetUsers(System.String,System.String)">
+            <summary>
+            Vraca listu svih personalnih naloga
+            </summary>
+            <param name="country">Name of the country</param>
+            <param name="username">User username</param>
+            <returns>List of personal user accounts</returns>
+            <response code="200">Returns the list</response>
+            <response code="204">No user accounts are found</response>
+            <response code="401">Unauthorized user</response>
+            <response code="500">There was an error on the server</response>
+        </member>
+        <member name="M:UserService.Controllers.PersonalUserController.GetUserById(System.Guid)">
+             <summary>
+             Vraca personalni nalog sa odredjenim ID-om
+             </summary>
+             <param name="userId">User's Id</param>
+             <returns>Personal user with userId</returns>
+            <response code="200">Returns personal user</response>
+             <response code="401">Unauthorized user</response>
+             <response code="404">User with userId is not found</response>
+             <response code="500">There was an error on the server</response>
+        </member>
+        <member name="M:UserService.Controllers.PersonalUserController.CreateUser(UserService.Models.Users.PersonalUserCreatingDto)">
+             <summary>
+             Kreiramo novi personalni nalog
+             </summary>
+             <param name="personalUser">Model of personal user</param>
+             <returns>Confirmation of the creation of personal user</returns>
+             <response code="200">Returns the created personal user</response>
+            <response code="409">Unique value violation</response>
+             <response code="422">Constraint violation</response>
+             <response code="500">There was an error on the server</response>
+        </member>
+        <member name="M:UserService.Controllers.PersonalUserController.UpdateUser(UserService.Models.Users.PersonalUserUpdateDto,System.Guid)">
+             <summary>
+             Update-ovanje personalnog naloga
+             </summary>
+             <param name="userId">User's Id</param>
+             <returns>Confirmation of update</returns>
+             <response code="200">Returns updated user</response>
+             <response code="404">Personal user with userId is not found</response>
+             <response code="500">Error on the server while updating</response>
+             <response code="400">User doesn't own the resource</response>
+             <response code="401">Unauthorized user</response>
+            <response code="409">Unique value violation</response>
+             <response code="422">Constraint violation</response>
+        </member>
+        <member name="M:UserService.Controllers.PersonalUserController.DeleteUser(System.Guid)">
+            <summary>
+            Brisanje personalnog naloga sa odredjenim ID-om
+            </summary>
+            <param name="userId">User's Id</param>
+            <returns>Status 204 (NoContent)</returns>
+            <response code="204">User succesfully deleted</response>
+            <response code="400">User doesn't own the resource</response>
+            <response code="404">User with userId not found</response>
+            <response code="500">Error on the server while deleting</response>
+        </member>
+        <member name="M:UserService.Controllers.PersonalUserController.CreateAdmin(UserService.Models.Users.PersonalUserCreatingDto)">
+            <summary>
+            Kreiranje novog personalnog naloga, Uloga-Admin
+            </summary>
+            <param name="personalUser">Model of personal user</param>
+            <returns>Confirmation of the creation of personal user</returns>
+            <response code="200">Returns the created personal user</response>
+            <response code="401">Unauthorize user</response>
+            <response code="409">Unique value violation</response>
+            <response code="422">Constraint violation</response>
+            <response code="500">There was an error on the server</response>
+        </member>
+        <member name="T:UserService.Controllers.RoleController">
+            <summary>
+            Kontroler za pribavljanje, kreiranje i brisanje uloga
+            </summary>
+        </member>
+        <member name="M:UserService.Controllers.RoleController.GetRoles(System.String)">
+             <summary>
+             Vraca listu svih uloga
+             </summary>
+             <param name="roleName"> Name of the role </param>
+             <returns>List of roles</returns>
+             <response code="200">Returns the list</response>
+             <response code="204">No roles  are found</response>
+            <response code="401">Unauthorized user</response>
+             <response code="500">Error on the server</response>
+        </member>
+        <member name="M:UserService.Controllers.RoleController.GetRoleById(System.Guid)">
+             <summary>
+             Vraca ulogu sa odredjenim ID-om
+             </summary>
+             <param name="roleId">User's Id</param>
+             <returns>Role with roleId</returns>
+            <response code="200">Returns the role</response>
+             <response code="404">Role with roleId is not found</response>
+             <response code="401">Unauthorized user</response>
+             <response code="500">Error on the server</response>
+        </member>
+        <member name="M:UserService.Controllers.RoleController.CreateRole(UserService.Models.Roles.RoleCreatingDto)">
+            <summary>
+            Kreiramo novu ulogu
+            </summary>
+            <param name="role">Model of role</param>
+            <returns>Confirmation of the creating of role</returns>
+            <response code="200">Returns the created role</response>
+            <response code="401">Unauthorized user</response>
+            <response code="409">Unique value violation</response>
+            <response code="500">There was an error on the server</response>
+        </member>
+        <member name="M:UserService.Controllers.RoleController.UpdateRole(UserService.Models.Roles.RoleUpdateDto,System.Guid)">
+            <summary>
+            Update-ovanje uloge
+            </summary>
+            <param name="roleId">Role Id</param>
+            <returns>Confirmation of update</returns>
+            <response code="200">Returns updated role</response>
+            <response code="400">Role with roleId is not found</response>
+            <response code="401">Unauthorized user</response>
+            <response code="409">Unique value violation</response>
+            <response code="500">Error on the server while updating</response>
+        </member>
+        <member name="M:UserService.Controllers.RoleController.DeleteRole(System.Guid)">
+            <summary>
+            Brisanje uloge sa odredjenim ID-om
+            </summary>
+            <param name="roleId">Role Id</param>
+            <returns>Status 204 (NoContent)</returns>
+            <response code="204">Role succesfully deleted</response>
+            <response code="401">Unauthorized user</response>
+            <response code="404">Role with roleId not found</response>
+            <response code="409">Role reference in another table</response>
+            <response code="500">Error on the server while deleting</response>
+        </member>
+        <member name="T:UserService.Controllers.UserController">
+            <summary>
+            Kontroler za pribavljanje korisnickih naloga
+            </summary>
+        </member>
+        <member name="M:UserService.Controllers.UserController.GetUsers(System.String,System.String,System.String)">
+            <summary>
+            Vraca listu svih korisnicih naloga u sistemu
+            </summary>
+            <param name="country">Name of the country</param>
+            <param name="userType">Name of the account type 
+            (personalUser or corporationUser)</param>
+            <returns>List of user accounts</returns>
+            <response code="200">Returns the list</response>
+            <response code="204">No user accounts are found</response>
+            <response code="401">Unauthorized user</response>
+            <response code="500">Error on the server</response>
+        </member>
+        <member name="M:UserService.Controllers.UserController.GetUserById(System.Guid)">
+             <summary>
+             Vraca korisnike sa odredjenim ID-om
+             </summary>
+             <param name="userId">User's Id</param>
+             <returns> User with userId</returns>
+            <response code="200">Returns the user</response>
+             <response code="401">Unauthorized user</response>
+             <response code="404">User with userId is not found</response>
+             <response code="500">Error on the server</response>
+        </member>
+        <member name="T:UserService.Entities.Country">
+            <summary>
+            Entiti klasa za zemlje
+            </summary>
+        </member>
+        <member name="P:UserService.Entities.Country.CountryId">
+            <summary>
+            Jedinstveni kljuc za zemlju
+            </summary>
+        </member>
+        <member name="P:UserService.Entities.Country.CountryName">
+            <summary>
+            Naziv zemlje
+            </summary>
+        </member>
+        <member name="P:UserService.Entities.CountryCreatingConfirmation.CountryId">
+            <summary>
+            Jedinstveni kljuc za zemlju
+            </summary>
+        </member>
+        <member name="P:UserService.Entities.CountryCreatingConfirmation.CountryName">
+            <summary>
+            Naziv zemlje
+            </summary>
+        </member>
+        <member name="P:UserService.Entities.AccountInfo.AccountIsActive">
+            <summary>
+            Boolean indikator da li je nalog aktivan
+            </summary>
+        </member>
+        <member name="T:UserService.Entities.AccountRole">
+            <summary>
+            Entitet koji modeluje uloge koje se koriste za autorizaciju
+            </summary>
+        </member>
+        <member name="P:UserService.Entities.AccountRole.Description">
+            <summary>
+            Opis uloge
+            </summary>
+        </member>
+        <member name="T:UserService.Entities.Role">
+            <summary>
+            Entiti klasa za uloge koje se koriste za autorizaciju
+            </summary>
+        </member>
+        <member name="P:UserService.Entities.Role.RoleId">
+            <summary>
+            Jedinstveni kljuc za ulogu
+            </summary>
+        </member>
+        <member name="P:UserService.Entities.Role.RoleName">
+            <summary>
+            Naziv uloge
+            </summary>
+        </member>
+        <member name="P:UserService.Entities.RoleCreatingConfirmation.RoleId">
+            <summary>
+            Jedinstveni kljuc uloge
+            </summary>
+        </member>
+        <member name="P:UserService.Entities.RoleCreatingConfirmation.RoleName">
+            <summary>
+            Naziv uloge
+            </summary>
+        </member>
+        <member name="T:UserService.Entities.CorporationUser">
+            <summary>
+            Entiti klasa za korporacijske naloge
+            </summary>
+        </member>
+        <member name="P:UserService.Entities.CorporationUser.CorporationName">
+            <summary>
+            Naziv korporacije
+            </summary>
+        </member>
+        <member name="P:UserService.Entities.CorporationUser.Pib">
+            <summary>
+            Pib korporacije
+            </summary>
+        </member>
+        <member name="P:UserService.Entities.CorporationUser.CorporationCity">
+            <summary>
+            Grad u kojoj se korporacija nalazi
+            </summary>
+        </member>
+        <member name="P:UserService.Entities.CorporationUser.CorporationAddress">
+            <summary>
+            Adresa na kojoj se korporacija nalazi
+            </summary>
+        </member>
+        <member name="P:UserService.Entities.CorporationUserCreatingConfirmation.CorporationName">
+            <summary>
+            Naziv korporacije
+            </summary>
+        </member>
+        <member name="P:UserService.Entities.CorporationUserCreatingConfirmation.Pib">
+            <summary>
+            Pib korporacije
+            </summary>
+        </member>
+        <member name="P:UserService.Entities.CorporationUserCreatingConfirmation.CorporationCity">
+            <summary>
+            Grad u kojoj se korporacija nalazi
+            </summary>
+        </member>
+        <member name="P:UserService.Entities.CorporationUserCreatingConfirmation.CorporationAddress">
+            <summary>
+            Adresa na kojoj je korporacija locirana
+            </summary>
+        </member>
+        <member name="T:UserService.Entities.PersonalUser">
+            <summary>
+            Entiti klasa za personalne naloge
+            </summary>
+        </member>
+        <member name="P:UserService.Entities.PersonalUser.FirstName">
+            <summary>
+            Ime korisnika
+            </summary>
+        </member>
+        <member name="P:UserService.Entities.PersonalUser.LastName">
+            <summary>
+            Prezime korisnika
+            </summary>
+        </member>
+        <member name="P:UserService.Entities.PersonalUserCreatingConfirmation.FirstName">
+            <summary>
+            Ime korisnika
+            </summary>
+        </member>
+        <member name="P:UserService.Entities.PersonalUserCreatingConfirmation.LastName">
+            <summary>
+            Prezime korisnika
+            </summary>
+        </member>
+        <member name="T:UserService.Entities.User">
+            <summary>
+            Entiti klasa za korisnike
+            </summary>
+        </member>
+        <member name="P:UserService.Entities.User.UserId">
+            <summary>
+            Jedinstveni kljuc za nalog
+            </summary>
+        </member>
+        <member name="P:UserService.Entities.User.Email">
+            <summary>
+            Email korisnika
+            </summary>
+        </member>
+        <member name="P:UserService.Entities.User.IsActive">
+            <summary>
+            Boolean vrednost koja ukazuje da li je korisnicki nalog aktivan
+            </summary>
+        </member>
+        <member name="P:UserService.Entities.User.Username">
+            <summary>
+            Korisnicki username
+            </summary>
+        </member>
+        <member name="P:UserService.Entities.User.Telephone">
+            <summary>
+            Telefon korisnika
+            </summary>
+        </member>
+        <member name="P:UserService.Entities.User.RoleId">
+            <summary>
+            Uloga korisnika
+            </summary>
+        </member>
+        <member name="P:UserService.Entities.User.CountryId">
+            <summary>
+            Drzava korisnika
+            </summary>
+        </member>
+        <member name="T:UserService.Entities.UserCreatingConfirmation">
+            <summary>
+            Klasa koje modelu potvrdu o kreiranju korisnickog naloga
+            </summary>
+        </member>
+        <member name="P:UserService.Entities.UserCreatingConfirmation.UserId">
+            <summary>
+            Jedinstveni kljuc naloga
+            </summary>
+        </member>
+        <member name="P:UserService.Entities.UserCreatingConfirmation.Email">
+            <summary>
+            Korisnicki email
+            </summary>
+        </member>
+        <member name="P:UserService.Entities.UserCreatingConfirmation.Username">
+            <summary>
+            Korisnicki username
+            </summary>
+        </member>
+        <member name="P:UserService.Entities.UserCreatingConfirmation.Telephone">
+            <summary>
+            Telefon korisnika
+            </summary>
+        </member>
+        <member name="P:UserService.Models.CheckAccountResponse.Succes">
+            <summary>
+            Boolean vrednost koja ukazuje na to da li autentifikacija uspesna
+            </summary>
+        </member>
+        <member name="P:UserService.Models.CheckAccountResponse.Message">
+             <summary>
+            Poruka, ukoliko autentifikacija nije uspesna
+             </summary>
+        </member>
+        <member name="P:UserService.Models.Country.CountryCreatingConfirmationDto.CountryId">
+            <summary>
+            Jedinstveni kljuc za drzavu
+            </summary>
+        </member>
+        <member name="P:UserService.Models.Country.CountryCreatingConfirmationDto.CountryName">
+            <summary>
+            Naziv drzave 
+            </summary>
+        </member>
+        <member name="P:UserService.Models.Country.CountryCreatingDto.CountryName">
+            <summary>
+            Naziv drzave 
+            </summary>
+        </member>
+        <member name="T:UserService.Models.Country.CountryDto">
+            <summary>
+            DTO klasa koja modelu drzavu
+            </summary>
+        </member>
+        <member name="P:UserService.Models.Country.CountryDto.CountryId">
+            <summary>
+            Jedinstveni kljuc za drzavu
+            </summary>
+        </member>
+        <member name="P:UserService.Models.Country.CountryDto.CountryName">
+            <summary>
+            Naziv drzave 
+            </summary>
+        </member>
+        <member name="P:UserService.Models.Country.CountryUpdateDto.CountryName">
+            <summary>
+            Naziv drzave 
+            </summary>
+        </member>
+        <member name="P:UserService.Models.Roles.RoleCreatingConfirmationDto.RoleId">
+            <summary>
+            Jedinstveni kljuc za ulogu
+            </summary>
+        </member>
+        <member name="P:UserService.Models.Roles.RoleCreatingConfirmationDto.RoleName">
+            <summary>
+            Naziv uloge
+            </summary>
+        </member>
+        <member name="P:UserService.Models.Roles.RoleCreatingDto.RoleName">
+            <summary>
+            Naziv uloge
+            </summary>
+        </member>
+        <member name="T:UserService.Models.Roles.RoleDto">
+            <summary>
+            DTO klasa koja modeluje uloge
+            </summary>
+        </member>
+        <member name="P:UserService.Models.Roles.RoleDto.RoleId">
+            <summary>
+            Jedinstveni kljuc uloge
+            </summary>
+        </member>
+        <member name="P:UserService.Models.Roles.RoleDto.RoleName">
+            <summary>
+            Naziv uloge
+            </summary>
+        </member>
+        <member name="P:UserService.Models.Roles.RoleUpdateDto.RoleName">
+            <summary>
+            Naziv uloge
+            </summary>
+        </member>
+        <member name="P:UserService.Models.Users.CorporationUserCreatingConfirmationDto.CorporationName">
+            <summary>
+            Naziv korporacije
+            </summary>
+        </member>
+        <member name="P:UserService.Models.Users.CorporationUserCreatingConfirmationDto.Pib">
+            <summary>
+            Pib korporacije
+            </summary>
+        </member>
+        <member name="P:UserService.Models.Users.CorporationUserCreatingConfirmationDto.CorporationCity">
+            <summary>
+            Grad u kojoj se korporacija nalazi
+            </summary>
+        </member>
+        <member name="P:UserService.Models.Users.CorporationUserCreatingConfirmationDto.CorporationAddress">
+            <summary>
+            Adresa na kojoj je korporacija locirana
+            </summary>
+        </member>
+        <member name="P:UserService.Models.Users.CorporationUserCreatingDto.CorporationName">
+            <summary>
+            Naziv korporacije
+            </summary>
+        </member>
+        <member name="P:UserService.Models.Users.CorporationUserCreatingDto.Pib">
+            <summary>
+            Pib korporacije
+            </summary>
+        </member>
+        <member name="P:UserService.Models.Users.CorporationUserCreatingDto.CorporationCity">
+            <summary>
+            Grad u kojoj se korporacija nalazi
+            </summary>
+        </member>
+        <member name="P:UserService.Models.Users.CorporationUserCreatingDto.CorporationAddress">
+            <summary>
+            Adresa na kojoj je korporacija locirana
+            </summary>
+        </member>
+        <member name="T:UserService.Models.Users.CorporationUserDto">
+            <summary>
+            DTO Klasa koja modelu korporacijski nalog
+            </summary>
+        </member>
+        <member name="P:UserService.Models.Users.CorporationUserDto.CorporationName">
+            <summary>
+            Naziv korporacije
+            </summary>
+        </member>
+        <member name="P:UserService.Models.Users.CorporationUserDto.Pib">
+            <summary>
+            Pib korporacije
+            </summary>
+        </member>
+        <member name="P:UserService.Models.Users.CorporationUserDto.CorporationCity">
+            <summary>
+            Grad u kojoj se korporacija nalazi
+            </summary>
+        </member>
+        <member name="P:UserService.Models.Users.CorporationUserDto.CorporationAddress">
+            <summary>
+            Adresa na kojoj je korporacija locirana
+            </summary>
+        </member>
+        <member name="P:UserService.Models.Users.CorporationUserUpdateDto.CorporationName">
+            <summary>
+            Naziv korporacije
+            </summary>
+        </member>
+        <member name="P:UserService.Models.Users.CorporationUserUpdateDto.Pib">
+            <summary>
+            Pib korporacije
+            </summary>
+        </member>
+        <member name="P:UserService.Models.Users.CorporationUserUpdateDto.CorporationCity">
+            <summary>
+            Grad u kojoj se korporacija nalazi
+            </summary>
+        </member>
+        <member name="P:UserService.Models.Users.CorporationUserUpdateDto.CorporationAddress">
+            <summary>
+            Adresa na kojoj je korporacija locirana
+            </summary>
+        </member>
+        <member name="P:UserService.Models.Users.PersonalUserCreatingConfirmationDto.FirstAndLastName">
+            <summary>
+            Ime i prezime korisnika
+            </summary>
+        </member>
+        <member name="P:UserService.Models.Users.PersonalUserCreatingDto.FirstName">
+            <summary>
+            Ime korisnika
+            </summary>
+        </member>
+        <member name="P:UserService.Models.Users.PersonalUserCreatingDto.LastName">
+            <summary>
+            Prezime korisnika
+            </summary>
+        </member>
+        <member name="T:UserService.Models.Users.PersonalUserDto">
+            <summary>
+            DTO klasa koja modeluje personalni nalog
+            </summary>
+        </member>
+        <member name="P:UserService.Models.Users.PersonalUserDto.FirstAndLastName">
+            <summary>
+            Ime i prezime
+            </summary>
+        </member>
+        <member name="P:UserService.Models.Users.PersonalUserUpdateDto.FirstName">
+            <summary>
+            Ime korisnika
+            </summary>
+        </member>
+        <member name="P:UserService.Models.Users.PersonalUserUpdateDto.LastName">
+            <summary>
+            Prezime korisnika
+            </summary>
+        </member>
+        <member name="T:UserService.Models.Users.UserCreatingConfirmationDto">
+            <summary>
+            DTO klasa koja modeluje potvrdu o kreiranju korisnika
+            </summary>
+        </member>
+        <member name="P:UserService.Models.Users.UserCreatingConfirmationDto.UserId">
+            <summary>
+            Jedinstveni kljuc naloga
+            </summary>
+        </member>
+        <member name="P:UserService.Models.Users.UserCreatingConfirmationDto.Email">
+            <summary>
+            Korisnicki email
+            </summary>
+        </member>
+        <member name="P:UserService.Models.Users.UserCreatingConfirmationDto.Username">
+            <summary>
+            Korisnicki username
+            </summary>
+        </member>
+        <member name="P:UserService.Models.Users.UserCreatingConfirmationDto.Telephone">
+            <summary>
+            Telefon korisnika
+            </summary>
+        </member>
+        <member name="P:UserService.Models.Users.UserCreatingDto.Email">
+            <summary>
+            Korisnicki email
+            </summary>
+        </member>
+        <member name="P:UserService.Models.Users.UserCreatingDto.Password">
+            <summary>
+            Korisnicka sifra
+            </summary>
+        </member>
+        <member name="P:UserService.Models.Users.UserCreatingDto.IsActive">
+            <summary>
+            Boolean vrednost da li je nalog aktivan
+            </summary>
+        </member>
+        <member name="P:UserService.Models.Users.UserCreatingDto.Username">
+            <summary>
+            Korisnicki username
+            </summary>
+        </member>
+        <member name="P:UserService.Models.Users.UserCreatingDto.Telephone">
+            <summary>
+            Telefon korisnika
+            </summary>
+        </member>
+        <member name="P:UserService.Models.Users.UserCreatingDto.CountryId">
+            <summary>
+            Strani kljuc CountryId
+            </summary>
+        </member>
+        <member name="T:UserService.Models.Users.UserDto">
+            <summary>
+            DTO klasa koja modelu korisnicki nalog
+            </summary>
+        </member>
+        <member name="P:UserService.Models.Users.UserDto.UserId">
+            <summary>
+            Jedinstveni kljuc korisnika
+            </summary>
+        </member>
+        <member name="P:UserService.Models.Users.UserDto.Email">
+            <summary>
+            Korisnicki email
+            </summary>
+        </member>
+        <member name="P:UserService.Models.Users.UserDto.IsActive">
+            <summary>
+            Boolean vrednost koja ukazuje da li je nalog aktivna
+            </summary>
+        </member>
+        <member name="P:UserService.Models.Users.UserDto.Username">
+            <summary>
+            Korisnicki username
+            </summary>
+        </member>
+        <member name="P:UserService.Models.Users.UserDto.Telephone">
+            <summary>
+            Telefon korisnika
+            </summary>
+        </member>
+        <member name="P:UserService.Models.Users.UserDto.Role">
+            <summary>
+            Korisnicka uloga koja se koristi za autorizaciju
+            </summary>
+        </member>
+        <member name="P:UserService.Models.Users.UserDto.Country">
+            <summary>
+            Drzava korisnika
+            </summary>
+        </member>
+        <member name="P:UserService.Models.Users.UserInfoDto.UserId">
+            <summary>
+            Jedinstveni kljuc korisnika
+            </summary>
+        </member>
+        <member name="P:UserService.Models.Users.UserInfoDto.AccountType">
+            <summary>
+            Informacije o tome koji je tip profila: personal ili corporational
+            </summary>
+        </member>
+        <member name="P:UserService.Models.Users.UserInfoDto.Email">
+            <summary>
+            Korisnicki email
+            </summary>
+        </member>
+        <member name="P:UserService.Models.Users.UserInfoDto.IsActive">
+            <summary>
+            Boolean vrednost koja ukazuje na to da li je nalog aktivan
+            </summary>
+        </member>
+        <member name="P:UserService.Models.Users.UserInfoDto.Username">
+            <summary>
+            Korisnicki username
+            </summary>
+        </member>
+        <member name="P:UserService.Models.Users.UserInfoDto.Telephone">
+            <summary>
+            Telefon korisnika
+            </summary>
+        </member>
+        <member name="P:UserService.Models.Users.UserInfoDto.Role">
+            <summary>
+            Uloga koja se koristi za autorizaciju
+            </summary>
+        </member>
+        <member name="P:UserService.Models.Users.UserInfoDto.Country">
+            <summary>
+            Drzava korisnika
+            </summary>
+        </member>
+        <member name="P:UserService.Models.Users.UserUpdateDto.IsActive">
+            <summary>
+            Boolean vrednost koja ukazuje na to da li je nalog aktivan
+            </summary>
+        </member>
+        <member name="P:UserService.Models.Users.UserUpdateDto.Username">
+            <summary>
+            Korisnicki username
+            </summary>
+        </member>
+        <member name="P:UserService.Models.Users.UserUpdateDto.Telephone">
+            <summary>
+            Telefon korisnika
+            </summary>
+        </member>
+        <member name="P:UserService.Models.Users.UserUpdateDto.CountryId">
+            <summary>
+            Strani kljuc CountryId
+            </summary>
+        </member>
+    </members>
+</doc>

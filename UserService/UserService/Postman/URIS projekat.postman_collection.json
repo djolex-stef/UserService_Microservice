@@ -1,0 +1,842 @@
+{
+	"info": {
+		"_postman_id": "19be4eda-e07e-4c71-8351-6470b7fdabda",
+		"name": "URIS projekat",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get all Users",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "CommunicationKey",
+						"value": "Super super tezak kljuc",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:44200/api/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "44200",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get users with country parameter",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "CommunicationKey",
+						"value": "Super super tezak kljuc",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:44200/api/users?country=Serbia",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "44200",
+					"path": [
+						"api",
+						"users"
+					],
+					"query": [
+						{
+							"key": "country",
+							"value": "Serbia"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get users with country and userType parameters",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "CommunicationKey",
+						"type": "text",
+						"value": "Super super tezak kljuc"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:44200/api/users?country=Serbia&userType=personalUser",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "44200",
+					"path": [
+						"api",
+						"users"
+					],
+					"query": [
+						{
+							"key": "country",
+							"value": "Serbia"
+						},
+						{
+							"key": "userType",
+							"value": "personalUser"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get user with userID",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "CommunicationKey",
+						"value": "Super super tezak kljuc",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:44200/api/users/194df880-d4ce-4997-96c9-878102eb6e0e",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "44200",
+					"path": [
+						"api",
+						"users",
+						"194df880-d4ce-4997-96c9-878102eb6e0e"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get corporationUsers",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "CommunicationKey",
+						"value": "Super super tezak kljuc",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:44200/api/corporationUsers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "44200",
+					"path": [
+						"api",
+						"corporationUsers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get corporationUsers with country parameter",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "CommunicationKey",
+						"type": "text",
+						"value": "Super super tezak kljuc"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:44200/api/corporationUsers?country=Serbia",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "44200",
+					"path": [
+						"api",
+						"corporationUsers"
+					],
+					"query": [
+						{
+							"key": "country",
+							"value": "Serbia"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get corporationUsers with username parameter",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "CommunicationKey",
+						"type": "text",
+						"value": "Super super tezak kljuc"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:44200/api/corporationUsers?username=NationalBank",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "44200",
+					"path": [
+						"api",
+						"corporationUsers"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "NationalBank"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get corporationUsers with userId parameter",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "CommunicationKey",
+						"type": "text",
+						"value": "Super super tezak kljuc"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:44200/api/corporationUsers/9346b8c4-1b3b-435f-9c35-35de3a76fcf9",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "44200",
+					"path": [
+						"api",
+						"corporationUsers",
+						"9346b8c4-1b3b-435f-9c35-35de3a76fcf9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get countries with name parameter",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "CommunicationKey",
+						"type": "text",
+						"value": "Super super tezak kljuc"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n        \"corporationName\": \"Stark3\",\r\n        \"pib\": \"515731\",\r\n        \"corporationCity\": \"Novi Sad\",\r\n        \"corporationAddress\": \"Kisacka 25\",\r\n        \"email\": \"stark3@gmail.com\",\r\n        \"isActive\": true,\r\n        \"username\": \"Stark2\",\r\n        \"telephone\": \"+38160111223\",\r\n        \"role\": \"Regular user\",\r\n        \"password\": \"123123\",\r\n        \"countryId\": \"6c3393d6-0c5f-40ef-0c35-08d97792df29\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:44200/api/countries?countryName=US",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "44200",
+					"path": [
+						"api",
+						"countries"
+					],
+					"query": [
+						{
+							"key": "countryName",
+							"value": "US"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get countries",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "CommunicationKey",
+						"type": "text",
+						"value": "Super super tezak kljuc"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n        \"corporationName\": \"Stark3\",\r\n        \"pib\": \"515731\",\r\n        \"corporationCity\": \"Novi Sad\",\r\n        \"corporationAddress\": \"Kisacka 25\",\r\n        \"email\": \"stark3@gmail.com\",\r\n        \"isActive\": true,\r\n        \"username\": \"Stark2\",\r\n        \"telephone\": \"+38160111223\",\r\n        \"role\": \"Regular user\",\r\n        \"password\": \"123123\",\r\n        \"countryId\": \"6c3393d6-0c5f-40ef-0c35-08d97792df29\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:44200/api/countries",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "44200",
+					"path": [
+						"api",
+						"countries"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get country with countryId parameter",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "CommunicationKey",
+						"type": "text",
+						"value": "Super super tezak kljuc"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n        \"corporationName\": \"Stark3\",\r\n        \"pib\": \"515731\",\r\n        \"corporationCity\": \"Novi Sad\",\r\n        \"corporationAddress\": \"Kisacka 25\",\r\n        \"email\": \"stark3@gmail.com\",\r\n        \"isActive\": true,\r\n        \"username\": \"Stark2\",\r\n        \"telephone\": \"+38160111223\",\r\n        \"role\": \"Regular user\",\r\n        \"password\": \"123123\",\r\n        \"countryId\": \"6c3393d6-0c5f-40ef-0c35-08d97792df29\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:44200/api/countries/8c349e7b-1c97-486d-aa2e-e58205d11577",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "44200",
+					"path": [
+						"api",
+						"countries",
+						"8c349e7b-1c97-486d-aa2e-e58205d11577"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete corporate user",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "CommunicationKey",
+						"type": "text",
+						"value": "Super super tezak kljuc"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n        \"corporationName\": \"Stark3\",\r\n        \"pib\": \"515731\",\r\n        \"corporationCity\": \"Novi Sad\",\r\n        \"corporationAddress\": \"Kisacka 25\",\r\n        \"email\": \"stark3@gmail.com\",\r\n        \"isActive\": true,\r\n        \"username\": \"Stark2\",\r\n        \"telephone\": \"+38160111223\",\r\n        \"role\": \"Regular user\",\r\n        \"password\": \"123123\",\r\n        \"countryId\": \"6c3393d6-0c5f-40ef-0c35-08d97792df29\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:44200/api/corporationUsers/a2f36467-819c-4393-6dfc-08d97921b952",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "44200",
+					"path": [
+						"api",
+						"corporationUsers",
+						"a2f36467-819c-4393-6dfc-08d97921b952"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update country",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "CommunicationKey",
+						"type": "text",
+						"value": "Super super tezak kljuc"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n        \"countryName\": \"Proba 2\"\r\n }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:44200/api/countries/d069296a-76d0-4d50-e930-08d97928c8f3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "44200",
+					"path": [
+						"api",
+						"countries",
+						"d069296a-76d0-4d50-e930-08d97928c8f3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete country",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "CommunicationKey",
+						"type": "text",
+						"value": "Super super tezak kljuc"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n        \"countryName\": \"United Kingdom\"\r\n }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:44200/api/countries/f712422d-1610-4394-4428-08d977a8acaf",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "44200",
+					"path": [
+						"api",
+						"countries",
+						"f712422d-1610-4394-4428-08d977a8acaf"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post corporateUser",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "CommunicationKey",
+						"type": "text",
+						"value": "Super super tezak kljuc"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n        \"corporationName\": \"Stark344\",\r\n        \"pib\": \"5157314\",\r\n        \"corporationCity\": \"Novi Sad\",\r\n        \"corporationAddress\": \"Kisacka 25\",\r\n        \"email\": \"stark34@gmail.com\",\r\n        \"isActive\": true,\r\n        \"username\": \"Stark22\",\r\n        \"telephone\": \"+38160111223\",\r\n        \"role\": \"Regular user\",\r\n        \"password\": \"123123\",\r\n        \"countryId\": \"6c3393d6-0c5f-40ef-0c35-08d97792df29\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:44200/api/corporationUsers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "44200",
+					"path": [
+						"api",
+						"corporationUsers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "put corporateUser",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "CommunicationKey",
+						"type": "text",
+						"value": "Super super tezak kljuc"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"corporationName\": \"Stark3444\",\r\n    \"pib\": \"515731\",\r\n    \"corporationCity\": \"Novi Sad\",\r\n    \"corporationAddress\": \"Kisacka 25\",\r\n    \"userId\": \"6a61c9e2-8a82-48d5-0f1e-08d977a63f4f\",\r\n    \"email\": \"stark3@gmail.com\",\r\n    \"isActive\": true,\r\n    \"username\": \"Stark344\",\r\n    \"telephone\": \"+381601111111\",\r\n    \"role\": \"Regular user\",\r\n    \"CountryId\": \"ff0c9396-7c4c-4bf5-a12e-6aa79c272413\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:44200/api/corporationUsers/6a61c9e2-8a82-48d5-0f1e-08d977a63f4f",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "44200",
+					"path": [
+						"api",
+						"corporationUsers",
+						"6a61c9e2-8a82-48d5-0f1e-08d977a63f4f"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get personalUsers",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "CommunicationKey",
+						"type": "text",
+						"value": "Super super tezak kljuc"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n        \"corporationName\": \"Stark3\",\r\n        \"pib\": \"515731\",\r\n        \"corporationCity\": \"Novi Sad\",\r\n        \"corporationAddress\": \"Kisacka 25\",\r\n        \"email\": \"stark3@gmail.com\",\r\n        \"isActive\": true,\r\n        \"username\": \"Stark2\",\r\n        \"telephone\": \"+38160111223\",\r\n        \"role\": \"Regular user\",\r\n        \"password\": \"123123\",\r\n        \"countryId\": \"6c3393d6-0c5f-40ef-0c35-08d97792df29\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:44200/api/personalUsers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "44200",
+					"path": [
+						"api",
+						"personalUsers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get personalUsers with userId parameter",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "CommunicationKey",
+						"type": "text",
+						"value": "Super super tezak kljuc"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n        \"corporationName\": \"Stark3\",\r\n        \"pib\": \"515731\",\r\n        \"corporationCity\": \"Novi Sad\",\r\n        \"corporationAddress\": \"Kisacka 25\",\r\n        \"email\": \"stark3@gmail.com\",\r\n        \"isActive\": true,\r\n        \"username\": \"Stark2\",\r\n        \"telephone\": \"+38160111223\",\r\n        \"role\": \"Regular user\",\r\n        \"password\": \"123123\",\r\n        \"countryId\": \"6c3393d6-0c5f-40ef-0c35-08d97792df29\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:44200/api/personalUsers/194df880-d4ce-4997-96c9-878102eb6e0e",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "44200",
+					"path": [
+						"api",
+						"personalUsers",
+						"194df880-d4ce-4997-96c9-878102eb6e0e"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post personalUser",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "CommunicationKey",
+						"type": "text",
+						"value": "Super super tezak kljuc"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"LastName\": \"Nikolic\",\r\n        \"FirstName\": \"Proba\",\r\n        \"password\":\"proba123\",\r\n        \"email\": \"nevena22@gmail.com\",\r\n        \"isActive\": true,\r\n        \"username\": \"nikolicNN22\",\r\n        \"telephone\": \"+381691234567\",\r\n        \"role\": \"Regular user\",\r\n        \"countryId\": \"6c3393d6-0c5f-40ef-0c35-08d97792df29\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:44200/api/personalUsers/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "44200",
+					"path": [
+						"api",
+						"personalUsers",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update personalUser",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "CommunicationKey",
+						"type": "text",
+						"value": "Super super tezak kljuc"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"LastName\": \"Nikolic 2\",\r\n        \"FirstName\": \"Proba 2\",\r\n        \"password\":\"proba12322\",\r\n        \"email\": \"proba2@gmail.com\",\r\n        \"isActive\": true,\r\n        \"username\": \"probaN22\",\r\n        \"telephone\": \"+381691234567\",\r\n        \"role\": \"Regular user\",\r\n        \"countryId\": \"6c3393d6-0c5f-40ef-0c35-08d97792df29\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:44200/api/personalUsers/8bfa10d2-e795-4bc2-3ce3-08d9785bd9ac",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "44200",
+					"path": [
+						"api",
+						"personalUsers",
+						"8bfa10d2-e795-4bc2-3ce3-08d9785bd9ac"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get roles",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "CommunicationKey",
+						"type": "text",
+						"value": "Super super tezak kljuc"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"LastName\": \"Nikolic\",\r\n        \"FirstName\": \"Proba\",\r\n        \"password\":\"proba123\",\r\n        \"email\": \"nevena22@gmail.com\",\r\n        \"isActive\": true,\r\n        \"username\": \"nikolicNN22\",\r\n        \"telephone\": \"+381691234567\",\r\n        \"role\": \"Regular user\",\r\n        \"countryId\": \"6c3393d6-0c5f-40ef-0c35-08d97792df29\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:44200/api/roles/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "44200",
+					"path": [
+						"api",
+						"roles",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create role",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "CommunicationKey",
+						"type": "text",
+						"value": "Super super tezak kljuc"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"roleName\" : \"Proba\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:44200/api/roles/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "44200",
+					"path": [
+						"api",
+						"roles",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update role",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "CommunicationKey",
+						"type": "text",
+						"value": "Super super tezak kljuc"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"roleName\" : \"Proba izmena\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:44200/api/roles/829b01f4-2368-4949-aaec-08d9786466b6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "44200",
+					"path": [
+						"api",
+						"roles",
+						"829b01f4-2368-4949-aaec-08d9786466b6"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
